@@ -39,7 +39,7 @@ export default function Hero() {
               className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 mb-6"
             >
               <span className="text-sm font-medium text-cyan-700 dark:text-cyan-300">
-                🎓 #1 Chemistry Academy Online
+                Chemistry Academy Online
               </span>
             </motion.div>
 
