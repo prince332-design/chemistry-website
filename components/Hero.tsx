@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, PlayCircle } from 'lucide-react'
+import Link from 'next/link'   // ✅ Link import karein
 
 const words = ['Confidence', 'Excellence', 'Success', 'Mastery']
 
@@ -56,14 +57,19 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all">
-                Start Learning Free
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-2 border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800">
-                <PlayCircle className="mr-2 h-4 w-4" />
-                View Courses
-              </Button>
+              <Link href="/#courses">
+                <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all">
+                  Start Learning Free
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+
+              <Link href="/#courses">
+                <Button size="lg" variant="outline" className="border-2 border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800">
+                  <PlayCircle className="mr-2 h-4 w-4" />
+                  View Courses
+                </Button>
+              </Link>
             </div>
 
             <div className="mt-12 flex gap-8">
