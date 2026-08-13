@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { ArrowLeft, BookOpen, ChevronRight } from 'lucide-react'
 import { courses } from '@/app/data/courses'
 
+export const dynamic = "force-dynamic"
+
 export async function generateStaticParams() {
   return courses.map((course) => ({
     slug: course.id,
@@ -10,13 +12,14 @@ export async function generateStaticParams() {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export default function CoursePage({ params }: PageProps) {
-  const course = courses.find((c) => c.id === params.slug)
+export default async function CoursePage({ params }: PageProps) {
+  const { slug } = await params
+  const course = courses.find((c) => c.id === slug)
 
   if (!course) {
     notFound()
