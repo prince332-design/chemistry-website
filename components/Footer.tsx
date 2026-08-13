@@ -61,7 +61,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-6 border-t border-slate-200/50 dark:border-slate-700/50 text-center">
           <p className="text-sm text-slate-500 dark:text-slate-400">
-            © {new Date().getFullYear()} ChemLab Academy. All rights reserved. Made with ❤️ for chemistry lovers.
+            © {new Date().getFullYear()} ChemLab Academy. Developed By Ali Raza . Made with ❤️ for chemistry lovers.
           </p>
         </div>
       </div>
