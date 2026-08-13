@@ -24,7 +24,7 @@ export default function Footer() {
             <h5 className="font-bold text-slate-800 dark:text-white mb-3">Quick Links</h5>
             <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
               <li><Link href="/#about" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">About Us</Link></li>
-              <li><Link href="/#courses" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Courses</Link></li>   {/* ✅ Updated */}
+              <li><Link href="/#courses" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Courses</Link></li>
               <li><Link href="/#contact" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Contact</Link></li>
               <li><Link href="#" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Blog</Link></li>
             </ul>
