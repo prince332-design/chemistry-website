@@ -1,6 +1,6 @@
 'use client'
 
-import { Atom, Mail, MapPin, Phone } from "lucide-react"
+import { Atom, Mail, MapPin, Phone, Facebook, Instagram, Youtube, Linkedin } from "lucide-react"
 import Link from 'next/link'
 
 export default function Footer() {
@@ -18,6 +18,44 @@ export default function Footer() {
             <p className="mt-4 text-sm text-slate-600 dark:text-slate-400 max-w-xs">
               Empowering students worldwide with world-class chemistry education and interactive learning experiences.
             </p>
+            <div className="flex gap-3 mt-4">
+              <a
+                href="https://facebook.com/yourpage"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-blue-600 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com/yourpage"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-pink-600 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://youtube.com/yourchannel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-red-600 transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+              <a
+                href="https://linkedin.com/company/yourpage"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-blue-700 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+            </div>
           </div>
 
           <div>
@@ -26,17 +64,17 @@ export default function Footer() {
               <li><Link href="/about" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">About Us</Link></li>
               <li><Link href="/#courses" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Courses</Link></li>
               <li><Link href="/#contact" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Contact</Link></li>
-              <li><Link href="#" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Blog</Link></li>
+              <li><Link href="/blog" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Blog</Link></li>
             </ul>
           </div>
 
           <div>
             <h5 className="font-bold text-slate-800 dark:text-white mb-3">Resources</h5>
             <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-              <li><Link href="#" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Past Papers</Link></li>
-              <li><Link href="#" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Simulations</Link></li>
-              <li><Link href="#" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Mentors</Link></li>
-              <li><Link href="#" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Community</Link></li>
+              <li><Link href="/notes" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Past Papers</Link></li>
+              <li><Link href="/notes" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Simulations</Link></li>
+              <li><Link href="/about#team" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Mentors</Link></li>
+              <li><Link href="/blog" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition">Community</Link></li>
             </ul>
           </div>
 
@@ -49,7 +87,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-cyan-500" />
-                +92 (305) 8411027
+                +92 305 8411027
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-cyan-500" />
@@ -61,7 +99,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-6 border-t border-slate-200/50 dark:border-slate-700/50 text-center">
           <p className="text-sm text-slate-500 dark:text-slate-400">
-            © {new Date().getFullYear()} ChemLab Academy. Developed By Ali Raza . Made with ❤️ for chemistry lovers.
+            © {new Date().getFullYear()} ChemLab Academy. Developed by Ali Raza. Made with ❤️ for chemistry lovers.
           </p>
         </div>
       </div>
