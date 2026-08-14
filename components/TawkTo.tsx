@@ -7,7 +7,7 @@ export default function TawkTo() {
     // Tawk.to script
     const script = document.createElement('script')
     script.async = true
-    script.src = 'https://embed.tawk.to/6a7f4f357425c450ced33fa6/1k00kqqhb'
+    script.src = 'https://embed.tawk.to/6a7f4f357425c450ced33fa6/1k00mimqr'
     script.charset = 'UTF-8'
     script.setAttribute('crossorigin', '*')
     document.body.appendChild(script)
