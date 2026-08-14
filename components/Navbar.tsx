@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Atom, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from './ThemeToggle'
+import TranslateButton from './TranslateButton'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -51,6 +52,7 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <TranslateButton />
             <ThemeToggle />
             <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white">
               Enroll Now
@@ -58,6 +60,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
+            <TranslateButton />
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -88,6 +91,10 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+              <div className="flex items-center gap-2 pt-2">
+                <TranslateButton />
+                <ThemeToggle />
+              </div>
               <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white">
                 Enroll Now
               </Button>
