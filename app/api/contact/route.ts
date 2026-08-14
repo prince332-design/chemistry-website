@@ -5,7 +5,6 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { name, email, subject, message } = body
 
-    // Validation
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { error: 'All fields are required' },
@@ -13,7 +12,6 @@ export async function POST(request: Request) {
       )
     }
 
-    // Email send logic (Formspree)
     const response = await fetch('https://formspree.io/f/mqpzbwgp', {
       method: 'POST',
       headers: {
