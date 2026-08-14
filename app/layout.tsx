@@ -7,6 +7,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from '@vercel/analytics/react'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import AnnouncementBar from '@/components/AnnouncementBar'
+import TawkTo from '@/components/TawkTo'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -75,6 +76,7 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
         <WhatsAppButton />
+        <TawkTo />
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
     </html>
