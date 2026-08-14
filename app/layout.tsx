@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/sonner'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from '@vercel/analytics/react'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import AnnouncementBar from '@/components/AnnouncementBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -62,6 +63,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        <AnnouncementBar />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
