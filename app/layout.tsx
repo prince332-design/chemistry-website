@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { Toaster } from '@/components/ui/sonner'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -63,6 +64,7 @@ export default function RootLayout({
           <Toaster />
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
     </html>
   )
 }
