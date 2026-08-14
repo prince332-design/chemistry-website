@@ -2,6 +2,7 @@
 
 import { Atom, Mail, MapPin, Phone, Facebook, Instagram, Youtube, Linkedin } from "lucide-react"
 import Link from 'next/link'
+import StatusIndicator from './StatusIndicator'
 
 export default function Footer() {
   return (
@@ -18,43 +19,46 @@ export default function Footer() {
             <p className="mt-4 text-sm text-slate-600 dark:text-slate-400 max-w-xs">
               Empowering students worldwide with world-class chemistry education and interactive learning experiences.
             </p>
-            <div className="flex gap-3 mt-4">
-              <a
-                href="https://facebook.com/yourpage"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-blue-600 transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="https://instagram.com/yourpage"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-pink-600 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="https://youtube.com/yourchannel"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-red-600 transition-colors"
-                aria-label="YouTube"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com/company/yourpage"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-blue-700 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
+            <div className="flex flex-wrap items-center gap-3 mt-4">
+              <div className="flex gap-3">
+                <a
+                  href="https://facebook.com/yourpage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-blue-600 transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://instagram.com/yourpage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-pink-600 transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://youtube.com/yourchannel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-red-600 transition-colors"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://linkedin.com/company/yourpage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-blue-700 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </div>
+              <StatusIndicator />
             </div>
           </div>
 
