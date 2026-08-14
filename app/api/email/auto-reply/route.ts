@@ -14,7 +14,6 @@ export async function POST(request: Request) {
       )
     }
 
-   
     const response = await fetch('https://api.sendinblue.com/v3/smtp/email', {
       method: 'POST',
       headers: {
