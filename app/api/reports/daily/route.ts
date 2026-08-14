@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    // Temporary data — Phase 4 mein database se fetch karenge
     const report = {
       date: new Date().toISOString().split('T')[0],
       enrollments: 0,
