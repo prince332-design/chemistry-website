@@ -22,7 +22,7 @@ export default function Navbar() {
   const [isContactOpen, setIsContactOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -32,36 +32,34 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? 'navbar-inverse-scrolled'
-            : 'navbar-inverse'
+            ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-lg'
+            : 'bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
+            {/* Logo — Style from File 1 */}
+            <Link href="/" className="flex items-center gap-2 group">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
-                <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-white/10 dark:border-slate-700/30 flex items-center justify-center backdrop-blur-sm">
-                  <Atom className="w-5 h-5 text-cyan-400 dark:text-cyan-500" />
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
+                <Atom className="h-8 w-8 text-cyan-500 dark:text-cyan-400 relative z-10" />
               </div>
-              <span className="text-lg font-semibold tracking-tight text-white dark:text-slate-800">
-                ChemLab
+              <span className="text-xl font-bold bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                ChemLab Academy
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            {/* Desktop Navigation — Style from File 1 */}
+            <div className="hidden lg:flex items-center gap-6">
               <div className="flex items-center gap-1">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="px-4 py-2 text-sm font-medium text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 transition-colors relative group rounded-lg hover:bg-white/10 dark:hover:bg-slate-800/10"
+                    className="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors relative group px-3 py-2"
                   >
                     {link.name}
-                    <span className="absolute inset-x-4 -bottom-0.5 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 dark:from-cyan-600 dark:to-purple-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 transition-all group-hover:w-full" />
                   </Link>
                 ))}
               </div>
@@ -70,13 +68,13 @@ export default function Navbar() {
                 <TranslateButton />
                 <ThemeToggle />
                 <Button
-                  className="relative px-4 py-2 text-sm font-medium text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 bg-white/10 dark:bg-slate-800/10 hover:bg-white/20 dark:hover:bg-slate-800/20 border border-white/20 dark:border-slate-700/30 rounded-lg backdrop-blur-sm transition-all"
+                  className="bg-slate-100/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all shadow-md hover:shadow-cyan-500/10"
                   onClick={() => setIsContactOpen(true)}
                 >
                   <MessageSquare className="mr-2 h-4 w-4" />
                   Contact
                 </Button>
-                <Button className="relative px-5 py-2 text-sm font-medium text-white bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 rounded-lg shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
+                <Button className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:scale-105">
                   Enroll Now
                 </Button>
               </div>
@@ -88,7 +86,7 @@ export default function Navbar() {
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg hover:bg-white/10 dark:hover:bg-slate-800/10 transition text-white dark:text-slate-800"
+                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-700 dark:text-slate-200"
               >
                 {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
@@ -96,41 +94,43 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu — Style from File 1 */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden navbar-inverse border-t border-white/10 dark:border-slate-700/30"
+              className="lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-700"
             >
-              <div className="px-4 py-6 space-y-2">
+              <div className="px-4 py-6 space-y-3">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-3 text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 hover:bg-white/10 dark:hover:bg-slate-800/10 rounded-lg transition"
+                    className="block py-2 text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition"
                   >
                     {link.name}
                   </Link>
                 ))}
-                <div className="pt-4 border-t border-white/10 dark:border-slate-700/30 flex flex-col gap-2">
-                  <Button
-                    className="w-full justify-center text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 bg-white/10 dark:bg-slate-800/10 hover:bg-white/20 dark:hover:bg-slate-800/20 border border-white/20 dark:border-slate-700/30 rounded-lg backdrop-blur-sm"
-                    onClick={() => {
-                      setIsOpen(false)
-                      setIsContactOpen(true)
-                    }}
-                  >
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    Contact
-                  </Button>
-                  <Button className="w-full justify-center text-white bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 rounded-lg shadow-lg shadow-cyan-500/20">
-                    Enroll Now
-                  </Button>
+                <div className="flex items-center gap-2 pt-2">
+                  <TranslateButton />
+                  <ThemeToggle />
                 </div>
+                <Button
+                  className="w-full bg-slate-100/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700"
+                  onClick={() => {
+                    setIsOpen(false)
+                    setIsContactOpen(true)
+                  }}
+                >
+                  <MessageSquare className="mr-2 h-4 w-4" />
+                  Contact
+                </Button>
+                <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white">
+                  Enroll Now
+                </Button>
               </div>
             </motion.div>
           )}
