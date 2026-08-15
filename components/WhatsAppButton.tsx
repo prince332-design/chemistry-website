@@ -7,20 +7,29 @@ export default function WhatsAppButton() {
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
   const [initialPos, setInitialPos] = useState({ x: 0, y: 0 })
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
   const buttonRef = useRef<HTMLAnchorElement>(null)
 
   const phoneNumber = '923058411027'
   const message = 'Hi! I need help with chemistry.'
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
-  // Load saved position from localStorage
+  // Load saved position from localStorage and set window size
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    
     const saved = localStorage.getItem('whatsapp-position')
     if (saved) {
       try {
         const pos = JSON.parse(saved)
         setPosition(pos)
       } catch (e) {}
+    } else {
+      // Default position: bottom-24 right-6
+      const defaultX = window.innerWidth - 80
+      const defaultY = window.innerHeight - 140
+      setPosition({ x: defaultX, y: defaultY })
     }
   }, [])
 
@@ -83,7 +92,7 @@ export default function WhatsAppButton() {
     }
   }
 
-  // Mouse event listeners
+  // Mouse/Touch event listeners
   useEffect(() => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove)
@@ -99,9 +108,14 @@ export default function WhatsAppButton() {
     }
   }, [isDragging, dragStart, initialPos, position])
 
-  // Calculate position
-  const left = position.x || window.innerWidth - 80
-  const top = position.y || window.innerHeight - 140
+  // If window size not loaded yet, return null (skip SSR rendering)
+  if (windowSize.width === 0 || windowSize.height === 0) {
+    return null
+  }
+
+  // Use saved position or fallback
+  const left = position.x || windowSize.width - 80
+  const top = position.y || windowSize.height - 140
 
   return (
     <a
