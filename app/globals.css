@@ -24,6 +24,12 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.75rem;
+    
+    /* Premium Accent Colors */
+    --accent-cyan: #06b6d4;
+    --accent-purple: #8b5cf6;
+    --accent-pink: #ec4899;
+    --accent-orange: #f97316;
   }
 
   .dark {
@@ -59,29 +65,120 @@
   }
 }
 
-/* 🚀 ULTRA PRO MAX PREMIUM GLASSMORPHISM */
+/* ============================================
+   🚀 ULTRA PRO MAX — PREMIUM GLASSMORPHISM
+   ============================================ */
+
+/* Glass Base — Light & Airy */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
 }
 
+/* Glass Dark — For Dark Mode */
 .glass-dark {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Glass White — For Light Mode on Dark Background */
+.glass-white {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+/* Glass Inverse — Light mode = dark, Dark mode = light */
+.glass-inverse {
+  @apply dark:glass-white glass-dark;
+}
+
+/* ============================================
+   ✨ PREMIUM GLOW EFFECTS
+   ============================================ */
+
+.glow-cyan {
+  box-shadow: 0 0 60px -12px rgba(6, 182, 212, 0.35);
+}
+
+.glow-purple {
+  box-shadow: 0 0 60px -12px rgba(139, 92, 246, 0.35);
+}
+
+.glow-pink {
+  box-shadow: 0 0 60px -12px rgba(236, 72, 153, 0.35);
+}
+
+.glow-subtle {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.04);
+}
+
+/* ============================================
+   🌈 PREMIUM GRADIENT TEXT
+   ============================================ */
+
+.text-premium {
+  @apply bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+}
+
+.text-premium-glow {
+  @apply text-premium;
+  text-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+}
+
+/* ============================================
+   🎨 PREMIUM BORDERS
+   ============================================ */
+
+.border-premium {
+  border-image: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink)) 1;
+}
+
+.border-premium-light {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.glow-cyan {
-  box-shadow: 0 0 40px -10px rgba(6, 182, 212, 0.4);
-}
-.glow-purple {
-  box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.4);
+/* ============================================
+   🧩 NAVBAR SPECIFIC
+   ============================================ */
+
+.navbar-inverse {
+  @apply bg-slate-900/80 dark:bg-white/80 backdrop-blur-xl border-b border-slate-700/30 dark:border-slate-200/30;
 }
 
-/* Premium Gradient Text */
-.text-premium {
-  @apply bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+.navbar-inverse-scrolled {
+  @apply bg-slate-900/95 dark:bg-white/95 backdrop-blur-xl border-b border-slate-700/50 dark:border-slate-200/50 shadow-2xl dark:shadow-white/5;
+}
+
+/* ============================================
+   🎯 BUTTON GLASS VARIANTS
+   ============================================ */
+
+.btn-glass {
+  @apply bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all;
+}
+
+.btn-glass-dark {
+  @apply bg-slate-800/50 backdrop-blur-sm border border-slate-700/30 text-slate-200 hover:bg-slate-800/70 transition-all;
+}
+
+/* ============================================
+   📱 RESPONSIVE FINE-TUNE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .glass,
+  .glass-dark,
+  .glass-white {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
