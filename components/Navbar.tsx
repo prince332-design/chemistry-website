@@ -72,7 +72,7 @@ export default function Navbar() {
                   onClick={() => setIsContactOpen(true)}
                 >
                   <MessageSquare className="mr-2 h-4 w-4" />
-                  Contact
+                  Quick Contact
                 </Button>
                 <Button className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:scale-105">
                   Enroll Now
