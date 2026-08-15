@@ -32,8 +32,8 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-background/80 backdrop-blur-lg border-b border-border shadow-lg'
-            : 'bg-transparent'
+            ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-700/50 shadow-lg dark:shadow-slate-800/50'
+            : 'bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +53,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group"
+                  className="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors relative group"
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 transition-all group-hover:w-full"></span>
@@ -62,7 +62,7 @@ export default function Navbar() {
               <TranslateButton />
               <ThemeToggle />
               <Button
-                className="bg-secondary/50 backdrop-blur-sm border border-border text-foreground hover:bg-secondary transition-all shadow-lg hover:shadow-cyan-500/10"
+                className="bg-slate-100/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all shadow-md hover:shadow-cyan-500/10"
                 onClick={() => setIsContactOpen(true)}
               >
                 <MessageSquare className="mr-2 h-4 w-4" />
@@ -78,7 +78,7 @@ export default function Navbar() {
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg hover:bg-accent transition text-foreground"
+                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-700 dark:text-slate-200"
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -92,7 +92,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border"
+              className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/50 dark:border-slate-700/50"
             >
               <div className="px-4 py-6 space-y-3">
                 {navLinks.map((link) => (
@@ -100,7 +100,7 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-2 text-foreground/80 hover:text-foreground transition"
+                    className="block py-2 text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition"
                   >
                     {link.name}
                   </Link>
@@ -110,7 +110,7 @@ export default function Navbar() {
                   <ThemeToggle />
                 </div>
                 <Button
-                  className="w-full bg-secondary/50 backdrop-blur-sm border border-border text-foreground hover:bg-secondary"
+                  className="w-full bg-slate-100/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700"
                   onClick={() => {
                     setIsOpen(false)
                     setIsContactOpen(true)
