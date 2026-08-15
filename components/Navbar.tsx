@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Atom, Menu, X, MessageSquare } from 'lucide-react'
+import { Atom, Menu, X, MessageSquare, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from './ThemeToggle'
 import TranslateButton from './TranslateButton'
@@ -22,7 +22,7 @@ export default function Navbar() {
   const [isContactOpen, setIsContactOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -32,96 +32,105 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-slate-900/95 dark:bg-white/95 backdrop-blur-md border-b border-slate-700/50 dark:border-slate-200/50 shadow-lg dark:shadow-slate-200/20'
-            : 'bg-slate-900/80 dark:bg-white/80 backdrop-blur-sm border-b border-transparent'
+            ? 'glass shadow-2xl border-b border-white/10 dark:border-white/5'
+            : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2 group">
+          <div className="flex items-center justify-between h-16 lg:h-20">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2.5 group">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <Atom className="h-8 w-8 text-cyan-400 dark:text-cyan-500 relative z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
+                <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-white/10 flex items-center justify-center backdrop-blur-sm">
+                  <Atom className="w-5 h-5 text-cyan-400" />
+                </div>
               </div>
-              <span className="text-xl font-bold text-white dark:text-slate-800">
-                ChemLab Academy
+              <span className="text-lg font-semibold tracking-tight text-white/90 dark:text-white/90">
+                ChemLab
               </span>
             </Link>
 
-            <div className="hidden md:flex items-center gap-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-sm font-medium text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 transition-colors relative group"
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-8">
+              <div className="flex items-center gap-1">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors relative group rounded-lg hover:bg-white/5"
+                  >
+                    {link.name}
+                    <span className="absolute inset-x-4 -bottom-0.5 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                  </Link>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-3">
+                <TranslateButton />
+                <ThemeToggle />
+                <Button
+                  className="relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg backdrop-blur-sm transition-all"
+                  onClick={() => setIsContactOpen(true)}
                 >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 dark:from-cyan-600 dark:to-purple-600 transition-all group-hover:w-full"></span>
-                </Link>
-              ))}
-              <TranslateButton />
-              <ThemeToggle />
-              <Button
-                className="bg-white/10 dark:bg-slate-800/10 backdrop-blur-sm border border-white/20 dark:border-slate-700/20 text-white dark:text-slate-800 hover:bg-white/20 dark:hover:bg-slate-800/20 transition-all shadow-md"
-                onClick={() => setIsContactOpen(true)}
-              >
-                <MessageSquare className="mr-2 h-4 w-4" />
-                Quick Contact
-              </Button>
-              <Button className="bg-gradient-to-r from-cyan-400 to-purple-500 hover:from-cyan-500 hover:to-purple-600 text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:scale-105">
-                Enroll Now
-              </Button>
+                  <MessageSquare className="mr-2 h-4 w-4" />
+                  Contact
+                </Button>
+                <Button className="relative px-5 py-2 text-sm font-medium text-white bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 rounded-lg shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-[1.02]">
+                  Enroll Now
+                </Button>
+              </div>
             </div>
 
-            <div className="flex items-center gap-2 md:hidden">
+            {/* Mobile Controls */}
+            <div className="flex lg:hidden items-center gap-2">
               <TranslateButton />
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg hover:bg-white/10 dark:hover:bg-slate-800/10 transition text-white dark:text-slate-800"
+                className="p-2 rounded-lg hover:bg-white/5 transition text-white/80"
               >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
             </div>
           </div>
         </div>
 
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-slate-900/95 dark:bg-white/95 backdrop-blur-md border-t border-slate-700/50 dark:border-slate-200/50"
+              className="lg:hidden glass border-t border-white/10"
             >
-              <div className="px-4 py-6 space-y-3">
+              <div className="px-4 py-6 space-y-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-2 text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 transition"
+                    className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition"
                   >
                     {link.name}
                   </Link>
                 ))}
-                <div className="flex items-center gap-2 pt-2">
-                  <TranslateButton />
-                  <ThemeToggle />
+                <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
+                  <Button
+                    className="w-full justify-center text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg backdrop-blur-sm"
+                    onClick={() => {
+                      setIsOpen(false)
+                      setIsContactOpen(true)
+                    }}
+                  >
+                    <MessageSquare className="mr-2 h-4 w-4" />
+                    Contact
+                  </Button>
+                  <Button className="w-full justify-center text-white bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 rounded-lg shadow-lg shadow-cyan-500/20">
+                    Enroll Now
+                  </Button>
                 </div>
-                <Button
-                  className="w-full bg-white/10 dark:bg-slate-800/10 backdrop-blur-sm border border-white/20 dark:border-slate-700/20 text-white dark:text-slate-800 hover:bg-white/20 dark:hover:bg-slate-800/20"
-                  onClick={() => {
-                    setIsOpen(false)
-                    setIsContactOpen(true)
-                  }}
-                >
-                  <MessageSquare className="mr-2 h-4 w-4" />
-                  Quick Contact
-                </Button>
-                <Button className="w-full bg-gradient-to-r from-cyan-400 to-purple-500 hover:from-cyan-500 hover:to-purple-600 text-white">
-                  Enroll Now
-                </Button>
               </div>
             </motion.div>
           )}
