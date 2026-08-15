@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Atom, Menu, X, MessageSquare, ChevronDown } from 'lucide-react'
+import { Atom, Menu, X, MessageSquare } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from './ThemeToggle'
 import TranslateButton from './TranslateButton'
@@ -32,8 +32,8 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? 'glass shadow-2xl border-b border-white/10 dark:border-white/5'
-            : 'bg-transparent'
+            ? 'navbar-inverse-scrolled'
+            : 'navbar-inverse'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,11 +42,11 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-2.5 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
-                <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-white/10 flex items-center justify-center backdrop-blur-sm">
-                  <Atom className="w-5 h-5 text-cyan-400" />
+                <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-white/10 dark:border-slate-700/30 flex items-center justify-center backdrop-blur-sm">
+                  <Atom className="w-5 h-5 text-cyan-400 dark:text-cyan-500" />
                 </div>
               </div>
-              <span className="text-lg font-semibold tracking-tight text-white/90 dark:text-white/90">
+              <span className="text-lg font-semibold tracking-tight text-white dark:text-slate-800">
                 ChemLab
               </span>
             </Link>
@@ -58,10 +58,10 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors relative group rounded-lg hover:bg-white/5"
+                    className="px-4 py-2 text-sm font-medium text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 transition-colors relative group rounded-lg hover:bg-white/10 dark:hover:bg-slate-800/10"
                   >
                     {link.name}
-                    <span className="absolute inset-x-4 -bottom-0.5 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                    <span className="absolute inset-x-4 -bottom-0.5 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 dark:from-cyan-600 dark:to-purple-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                   </Link>
                 ))}
               </div>
@@ -70,7 +70,7 @@ export default function Navbar() {
                 <TranslateButton />
                 <ThemeToggle />
                 <Button
-                  className="relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg backdrop-blur-sm transition-all"
+                  className="relative px-4 py-2 text-sm font-medium text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 bg-white/10 dark:bg-slate-800/10 hover:bg-white/20 dark:hover:bg-slate-800/20 border border-white/20 dark:border-slate-700/30 rounded-lg backdrop-blur-sm transition-all"
                   onClick={() => setIsContactOpen(true)}
                 >
                   <MessageSquare className="mr-2 h-4 w-4" />
@@ -88,7 +88,7 @@ export default function Navbar() {
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg hover:bg-white/5 transition text-white/80"
+                className="p-2 rounded-lg hover:bg-white/10 dark:hover:bg-slate-800/10 transition text-white dark:text-slate-800"
               >
                 {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
@@ -103,7 +103,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden glass border-t border-white/10"
+              className="lg:hidden navbar-inverse border-t border-white/10 dark:border-slate-700/30"
             >
               <div className="px-4 py-6 space-y-2">
                 {navLinks.map((link) => (
@@ -111,14 +111,14 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition"
+                    className="block px-4 py-3 text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 hover:bg-white/10 dark:hover:bg-slate-800/10 rounded-lg transition"
                   >
                     {link.name}
                   </Link>
                 ))}
-                <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
+                <div className="pt-4 border-t border-white/10 dark:border-slate-700/30 flex flex-col gap-2">
                   <Button
-                    className="w-full justify-center text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg backdrop-blur-sm"
+                    className="w-full justify-center text-white/80 dark:text-slate-700/80 hover:text-white dark:hover:text-slate-900 bg-white/10 dark:bg-slate-800/10 hover:bg-white/20 dark:hover:bg-slate-800/20 border border-white/20 dark:border-slate-700/30 rounded-lg backdrop-blur-sm"
                     onClick={() => {
                       setIsOpen(false)
                       setIsContactOpen(true)
