@@ -1,7 +1,6 @@
 'use client'
 
 import { Atom, Mail, MapPin, Phone } from "lucide-react"
-import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa"
 import Link from 'next/link'
 import StatusIndicator from './StatusIndicator'
 
@@ -21,7 +20,7 @@ export default function Footer() {
               Empowering students worldwide with world-class chemistry education and interactive learning experiences.
             </p>
             <div className="flex flex-wrap items-center gap-3 mt-4">
-              <div className="flex gap-3">
+              <div className="flex gap-3 text-xl">
                 <a
                   href="https://facebook.com/yourpage"
                   target="_blank"
@@ -29,7 +28,7 @@ export default function Footer() {
                   className="text-slate-400 hover:text-blue-600 transition-colors"
                   aria-label="Facebook"
                 >
-                  <FaFacebook className="h-5 w-5" />
+                  📘
                 </a>
                 <a
                   href="https://instagram.com/yourpage"
@@ -38,7 +37,7 @@ export default function Footer() {
                   className="text-slate-400 hover:text-pink-600 transition-colors"
                   aria-label="Instagram"
                 >
-                  <FaInstagram className="h-5 w-5" />
+                  📸
                 </a>
                 <a
                   href="https://youtube.com/yourchannel"
@@ -47,7 +46,7 @@ export default function Footer() {
                   className="text-slate-400 hover:text-red-600 transition-colors"
                   aria-label="YouTube"
                 >
-                  <FaYoutube className="h-5 w-5" />
+                  ▶️
                 </a>
                 <a
                   href="https://linkedin.com/company/yourpage"
@@ -56,7 +55,7 @@ export default function Footer() {
                   className="text-slate-400 hover:text-blue-700 transition-colors"
                   aria-label="LinkedIn"
                 >
-                  <FaLinkedin className="h-5 w-5" />
+                  🔗
                 </a>
               </div>
               <StatusIndicator />
