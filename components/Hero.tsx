@@ -19,16 +19,16 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-16 bg-slate-950">
-      {/* Premium Animated Blobs */}
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-16 bg-background text-foreground">
+      {/* Theme-Aware Animated Blobs */}
       <div className="absolute inset-0">
-        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-r from-cyan-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-r from-cyan-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse dark:opacity-50"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse delay-1000 dark:opacity-50"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full blur-3xl dark:opacity-20"></div>
       </div>
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
+      {/* Grid Pattern Overlay (optional) */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-20 dark:opacity-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -42,21 +42,21 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-block px-4 py-2 rounded-full glass border border-cyan-400/30"
+              className="inline-block px-4 py-2 rounded-full glass border border-cyan-400/30 dark:border-cyan-400/20"
             >
-              <span className="text-sm font-medium text-cyan-300">
+              <span className="text-sm font-medium text-cyan-600 dark:text-cyan-300">
                 #1 Chemistry Academy Online
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight text-white">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
               Master Chemistry with{' '}
-              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 {words[index]}
               </span>
             </h1>
 
-            <p className="mt-6 text-lg text-white/70 max-w-lg">
+            <p className="mt-6 text-lg text-foreground/80 max-w-lg">
               Interactive courses, live labs, and expert mentors for O/A-Levels, FSc, and University students.
               Join 10,000+ students already excelling in chemistry.
             </p>
@@ -69,7 +69,7 @@ export default function Hero() {
                 </Button>
               </Link>
               <Link href="#courses">
-                <Button size="lg" variant="outline" className="glass border-white/20 text-white hover:bg-white/10 transition-all">
+                <Button size="lg" variant="outline" className="glass border-border text-foreground hover:bg-accent hover:text-accent-foreground transition-all">
                   <PlayCircle className="mr-2 h-4 w-4" />
                   View Courses
                 </Button>
@@ -83,10 +83,10 @@ export default function Hero() {
                 { label: 'Mentors', value: '30+' },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-foreground">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-white/50">
+                  <div className="text-sm text-foreground/50">
                     {stat.label}
                   </div>
                 </div>
@@ -100,7 +100,6 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative flex justify-center items-center"
           >
-            {/* Premium Glass Card for Atom */}
             <div className="relative w-80 h-80 sm:w-96 sm:h-96 glass rounded-full flex items-center justify-center">
               {/* Rotating Rings */}
               <motion.div
@@ -108,21 +107,21 @@ export default function Hero() {
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                 className="absolute inset-0"
               >
-                <div className="w-full h-full border border-cyan-400/30 rounded-full" />
+                <div className="w-full h-full border border-cyan-400/30 dark:border-cyan-400/20 rounded-full" />
               </motion.div>
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
                 className="absolute inset-4"
               >
-                <div className="w-[calc(100%-2rem)] h-[calc(100%-2rem)] border border-purple-400/30 rounded-full" />
+                <div className="w-[calc(100%-2rem)] h-[calc(100%-2rem)] border border-purple-400/30 dark:border-purple-400/20 rounded-full" />
               </motion.div>
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
                 className="absolute inset-8"
               >
-                <div className="w-[calc(100%-4rem)] h-[calc(100%-4rem)] border border-pink-400/30 rounded-full" />
+                <div className="w-[calc(100%-4rem)] h-[calc(100%-4rem)] border border-pink-400/30 dark:border-pink-400/20 rounded-full" />
               </motion.div>
 
               {/* Floating Atoms */}
