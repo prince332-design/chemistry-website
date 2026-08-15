@@ -45,7 +45,7 @@ export default function Hero() {
               className="inline-block px-4 py-2 rounded-full glass border border-cyan-400/30 dark:border-cyan-400/20"
             >
               <span className="text-sm font-medium text-cyan-600 dark:text-cyan-300">
-                #1 Chemistry Academy Online
+              Academy Online
               </span>
             </motion.div>
 
