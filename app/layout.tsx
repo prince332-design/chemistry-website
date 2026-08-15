@@ -72,9 +72,11 @@ export default function RootLayout({
           <AnnouncementBar />
           {children}
           <Toaster />
-          <WhatsAppButton />
           <TawkTo />
         </ThemeProvider>
+
+        {/* WhatsApp Button — outside ThemeProvider to avoid interference */}
+        <WhatsAppButton />
 
         {/* Google Translate Hidden Element */}
         <div id="google_translate_element" style={{ display: 'none' }}></div>
