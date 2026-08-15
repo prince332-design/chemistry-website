@@ -1,6 +1,7 @@
 'use client'
 
-import { Atom, Mail, MapPin, Phone, Facebook, Instagram, Youtube, Linkedin } from "lucide-react"
+import { Atom, Mail, MapPin, Phone } from "lucide-react"
+import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa"
 import Link from 'next/link'
 import StatusIndicator from './StatusIndicator'
 
@@ -28,7 +29,7 @@ export default function Footer() {
                   className="text-slate-400 hover:text-blue-600 transition-colors"
                   aria-label="Facebook"
                 >
-                  <Facebook className="h-5 w-5" />
+                  <FaFacebook className="h-5 w-5" />
                 </a>
                 <a
                   href="https://instagram.com/yourpage"
@@ -37,7 +38,7 @@ export default function Footer() {
                   className="text-slate-400 hover:text-pink-600 transition-colors"
                   aria-label="Instagram"
                 >
-                  <Instagram className="h-5 w-5" />
+                  <FaInstagram className="h-5 w-5" />
                 </a>
                 <a
                   href="https://youtube.com/yourchannel"
@@ -46,7 +47,7 @@ export default function Footer() {
                   className="text-slate-400 hover:text-red-600 transition-colors"
                   aria-label="YouTube"
                 >
-                  <Youtube className="h-5 w-5" />
+                  <FaYoutube className="h-5 w-5" />
                 </a>
                 <a
                   href="https://linkedin.com/company/yourpage"
@@ -55,7 +56,7 @@ export default function Footer() {
                   className="text-slate-400 hover:text-blue-700 transition-colors"
                   aria-label="LinkedIn"
                 >
-                  <Linkedin className="h-5 w-5" />
+                  <FaLinkedin className="h-5 w-5" />
                 </a>
               </div>
               <StatusIndicator />
