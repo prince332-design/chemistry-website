@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { Atom, Menu, X, MessageSquare } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from './ThemeToggle'
-import TranslateButton from './TranslateButton'
 import QuickContact from './QuickContact'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -38,7 +37,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo — Style from File 1 */}
+            {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
@@ -49,7 +48,7 @@ export default function Navbar() {
               </span>
             </Link>
 
-            {/* Desktop Navigation — Style from File 1 */}
+            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-6">
               <div className="flex items-center gap-1">
                 {navLinks.map((link) => (
@@ -65,7 +64,6 @@ export default function Navbar() {
               </div>
 
               <div className="flex items-center gap-3">
-                <TranslateButton />
                 <ThemeToggle />
                 <Button
                   className="bg-slate-100/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all shadow-md hover:shadow-cyan-500/10"
@@ -82,7 +80,6 @@ export default function Navbar() {
 
             {/* Mobile Controls */}
             <div className="flex lg:hidden items-center gap-2">
-              <TranslateButton />
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -94,7 +91,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu — Style from File 1 */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -115,7 +112,6 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <div className="flex items-center gap-2 pt-2">
-                  <TranslateButton />
                   <ThemeToggle />
                 </div>
                 <Button
