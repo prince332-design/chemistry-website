@@ -32,7 +32,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? 'glass-dark shadow-2xl'
+            ? 'bg-background/80 backdrop-blur-lg border-b border-border shadow-lg'
             : 'bg-transparent'
         }`}
       >
@@ -41,9 +41,9 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-2 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <Atom className="h-8 w-8 text-cyan-400 relative z-10" />
+                <Atom className="h-8 w-8 text-cyan-500 dark:text-cyan-400 relative z-10" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 ChemLab Academy
               </span>
             </Link>
@@ -53,16 +53,16 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-white/80 hover:text-white transition-colors relative group"
+                  className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 transition-all group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 transition-all group-hover:w-full"></span>
                 </Link>
               ))}
               <TranslateButton />
               <ThemeToggle />
               <Button
-                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all shadow-lg hover:shadow-cyan-500/20"
+                className="bg-secondary/50 backdrop-blur-sm border border-border text-foreground hover:bg-secondary transition-all shadow-lg hover:shadow-cyan-500/10"
                 onClick={() => setIsContactOpen(true)}
               >
                 <MessageSquare className="mr-2 h-4 w-4" />
@@ -78,7 +78,7 @@ export default function Navbar() {
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg hover:bg-white/10 transition text-white"
+                className="p-2 rounded-lg hover:bg-accent transition text-foreground"
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -92,7 +92,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="glass-dark md:hidden border-t border-white/10"
+              className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border"
             >
               <div className="px-4 py-6 space-y-3">
                 {navLinks.map((link) => (
@@ -100,7 +100,7 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-2 text-white/80 hover:text-white transition"
+                    className="block py-2 text-foreground/80 hover:text-foreground transition"
                   >
                     {link.name}
                   </Link>
@@ -110,7 +110,7 @@ export default function Navbar() {
                   <ThemeToggle />
                 </div>
                 <Button
-                  className="w-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20"
+                  className="w-full bg-secondary/50 backdrop-blur-sm border border-border text-foreground hover:bg-secondary"
                   onClick={() => {
                     setIsOpen(false)
                     setIsContactOpen(true)
