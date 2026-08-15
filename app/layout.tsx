@@ -4,7 +4,6 @@ import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { Toaster } from '@/components/ui/sonner'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import AnnouncementBar from '@/components/AnnouncementBar'
 import TawkTo from '@/components/TawkTo'
 import FloatingAnnouncement from '@/components/FloatingAnnouncement'
 
@@ -69,7 +68,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AnnouncementBar />
           {children}
           <Toaster />
           <TawkTo />
