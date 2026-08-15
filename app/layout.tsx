@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/sonner'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import AnnouncementBar from '@/components/AnnouncementBar'
 import TawkTo from '@/components/TawkTo'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -74,6 +75,30 @@ export default function RootLayout({
           <WhatsAppButton />
           <TawkTo />
         </ThemeProvider>
+
+        {/* Google Translate Hidden Element */}
+        <div id="google_translate_element" style={{ display: 'none' }}></div>
+
+        {/* Google Translate Script */}
+        <Script
+          id="google-translate"
+          strategy="afterInteractive"
+          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                  pageLanguage: 'en',
+                  includedLanguages: 'en,ur',
+                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                  autoDisplay: false
+                }, 'google_translate_element');
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   )
