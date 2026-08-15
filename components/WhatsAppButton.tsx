@@ -26,8 +26,8 @@ export default function WhatsAppButton() {
         setPosition(pos)
       } catch (e) {}
     } else {
-      // Default position: bottom-24 right-6
-      const defaultX = window.innerWidth - 80
+      // ✅ DEFAULT POSITION: LEFT SIDE
+      const defaultX = 16  // left side with 16px padding
       const defaultY = window.innerHeight - 140
       setPosition({ x: defaultX, y: defaultY })
     }
@@ -113,8 +113,8 @@ export default function WhatsAppButton() {
     return null
   }
 
-  // Use saved position or fallback
-  const left = position.x || windowSize.width - 80
+  // ✅ Use saved position or fallback — LEFT SIDE
+  const left = position.x || 16
   const top = position.y || windowSize.height - 140
 
   return (
