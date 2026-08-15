@@ -30,17 +30,20 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-lg'
-            : 'bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm'
+            ? 'glass-dark shadow-2xl'
+            : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <Atom className="h-8 w-8 text-cyan-500" />
-              <span className="text-xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent">
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                <Atom className="h-8 w-8 text-cyan-400 relative z-10" />
+              </div>
+              <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 ChemLab Academy
               </span>
             </Link>
@@ -50,21 +53,22 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+                  className="text-sm font-medium text-white/80 hover:text-white transition-colors relative group"
                 >
                   {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 transition-all group-hover:w-full"></span>
                 </Link>
               ))}
               <TranslateButton />
               <ThemeToggle />
               <Button
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
+                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all shadow-lg hover:shadow-cyan-500/20"
                 onClick={() => setIsContactOpen(true)}
               >
                 <MessageSquare className="mr-2 h-4 w-4" />
                 Quick Contact
               </Button>
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white">
+              <Button className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:scale-105">
                 Enroll Now
               </Button>
             </div>
@@ -74,7 +78,7 @@ export default function Navbar() {
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                className="p-2 rounded-lg hover:bg-white/10 transition text-white"
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -88,15 +92,15 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-700"
+              className="glass-dark md:hidden border-t border-white/10"
             >
-              <div className="px-4 py-4 space-y-3">
+              <div className="px-4 py-6 space-y-3">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-2 text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition"
+                    className="block py-2 text-white/80 hover:text-white transition"
                   >
                     {link.name}
                   </Link>
@@ -106,7 +110,7 @@ export default function Navbar() {
                   <ThemeToggle />
                 </div>
                 <Button
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
+                  className="w-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20"
                   onClick={() => {
                     setIsOpen(false)
                     setIsContactOpen(true)
@@ -115,7 +119,7 @@ export default function Navbar() {
                   <MessageSquare className="mr-2 h-4 w-4" />
                   Quick Contact
                 </Button>
-                <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white">
+                <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white">
                   Enroll Now
                 </Button>
               </div>
