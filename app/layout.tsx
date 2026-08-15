@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/sonner'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import AnnouncementBar from '@/components/AnnouncementBar'
 import TawkTo from '@/components/TawkTo'
+import FloatingAnnouncement from '@/components/FloatingAnnouncement'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -73,6 +74,7 @@ export default function RootLayout({
           <Toaster />
           <TawkTo />
           <WhatsAppButton />
+          <FloatingAnnouncement />
         </ThemeProvider>
       </body>
     </html>
