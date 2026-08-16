@@ -1,7 +1,8 @@
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
-import { table } from '@sanity/table'     
+import { table } from '@sanity/table'
+import { codeInput } from '@sanity/code-input'   
 import { schemaTypes } from './sanity/schemas'
 
 export default defineConfig({
@@ -15,7 +16,8 @@ export default defineConfig({
   plugins: [
     deskTool(),
     visionTool(),
-    table(),                                
+    table(),
+    codeInput(),        
   ],
 
   schema: {
