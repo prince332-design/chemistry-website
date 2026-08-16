@@ -19,11 +19,10 @@ export default {
           { title: 'Class 11 (FSc Part 1)', value: '11' },
           { title: 'Class 12 (FSc Part 2)', value: '12' },
           // 🏛️ University Level
-          { title: 'BS (Hons) 1st Year', value: 'bs1' },
-          { title: 'BS (Hons) 2nd Year', value: 'bs2' },
-          { title: 'BS (Hons) 3rd Year', value: 'bs3' },
+          { title: 'BS 1st Year', value: 'bs1' },
+          { title: 'BS 2nd Year', value: 'bs2' },
+          { title: 'BS 3rd Year', value: 'bs3' },
           { title: 'BS (Hons) 4th Year', value: 'bs4' },
-          { title: 'M.Sc', value: 'msc' },
           { title: 'M.Phil', value: 'mphil' },
           { title: 'PhD', value: 'phd' }
         ]
@@ -41,11 +40,11 @@ export default {
       type: 'string',
       options: {
         list: [
-          { title: '🎒 School (6-10)', value: 'school' },
-          { title: '📚 College (11-12)', value: 'college' },
-          { title: '🎓 Undergraduate (BS)', value: 'undergraduate' },
-          { title: '📘 Graduate (M.Sc)', value: 'graduate' },
-          { title: '🔬 Postgraduate (M.Phil/PhD)', value: 'postgraduate' }
+          { title: '🎒 Middle (Grade 6-8)', value: 'middle' },
+          { title: '📚 Secondary (Grade 9-10 / Matric / SSC)', value: 'secondary' },
+          { title: '📖 Higher Secondary (Grade 11-12 / Intermediate / HSSC / FSc)', value: 'higher-secondary' },
+          { title: '🎓 Undergraduate (BS / BA / BSc)', value: 'undergraduate' },
+          { title: '🔬 Postgraduate (M.Sc / MS / M.Phil / PhD)', value: 'postgraduate' },
         ]
       }
     },
