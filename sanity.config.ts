@@ -1,6 +1,7 @@
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
+import { table } from '@sanity/table'     
 import { schemaTypes } from './sanity/schemas'
 
 export default defineConfig({
@@ -11,7 +12,11 @@ export default defineConfig({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   studioHost: 'chemlab-academy',
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [
+    deskTool(),
+    visionTool(),
+    table(),                                
+  ],
 
   schema: {
     types: schemaTypes,
