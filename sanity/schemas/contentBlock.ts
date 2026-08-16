@@ -4,7 +4,7 @@ import {
 } from 'react-icons/fa'
 import { BiLink, BiAlignLeft, BiAlignMiddle, BiAlignRight, BiAlignJustify } from 'react-icons/bi'
 import { BsListUl, BsListOl, BsTypeH1, BsTypeH2, BsTypeH3, BsTypeH4, BsTypeH5, BsTypeH6, BsQuote, BsCode } from 'react-icons/bs'
-import { MdTableRows, MdImage, MdVideoLibrary, MdAudiotrack, MdAttachFile, MdCalculate, MdCode } from 'react-icons/md'
+import { MdTableRows, MdImage, MdVideoLibrary, MdAudiotrack, MdAttachFile, MdCalculate, MdCode, MdHorizontalRule, MdPageview } from 'react-icons/md'
 import { RiTextDirectionL, RiTextDirectionR } from 'react-icons/ri'
 
 export default {
@@ -12,7 +12,11 @@ export default {
   title: 'Content Block',
   type: 'array',
   of: [
-    // ===== TEXT BLOCKS =====
+    // ==========================================
+    // 📝 PHASE 1 — BASIC WORD EDITOR
+    // ==========================================
+
+    // ----- TEXT BLOCK -----
     {
       type: 'block',
       styles: [
@@ -57,7 +61,7 @@ export default {
       ],
     },
 
-    // ===== TEXT DIRECTION =====
+    // ----- TEXT DIRECTION -----
     {
       type: 'object',
       name: 'textDirection',
@@ -77,7 +81,9 @@ export default {
       ],
     },
 
-    // ===== TABLES =====
+    // ==========================================
+    // 📊 PHASE 2 — TABLES
+    // ==========================================
     {
       type: 'table',
       name: 'table',
@@ -85,7 +91,11 @@ export default {
       icon: MdTableRows,
     },
 
-    // ===== IMAGES =====
+    // ==========================================
+    // 🖼️ PHASE 3 — IMAGES & FILES
+    // ==========================================
+
+    // ----- IMAGE -----
     {
       type: 'image',
       name: 'image',
@@ -105,7 +115,7 @@ export default {
       ],
     },
 
-    // ===== FILES =====
+    // ----- FILE -----
     {
       type: 'file',
       name: 'file',
@@ -117,7 +127,7 @@ export default {
       ],
     },
 
-    // ===== VIDEOS =====
+    // ----- VIDEO -----
     {
       type: 'object',
       name: 'video',
@@ -135,7 +145,7 @@ export default {
       ],
     },
 
-    // ===== AUDIO =====
+    // ----- AUDIO -----
     {
       type: 'object',
       name: 'audio',
@@ -151,7 +161,7 @@ export default {
     // 🧮 PHASE 4 — ACADEMIC FEATURES
     // ==========================================
 
-    // ===== CODE / EQUATION BLOCK =====
+    // ----- CODE / EQUATION -----
     {
       type: 'code',
       name: 'code',
@@ -172,7 +182,7 @@ export default {
       },
     },
 
-    // ===== CHEMISTRY BLOCK =====
+    // ----- CHEMISTRY BLOCK -----
     {
       type: 'object',
       name: 'chemistry',
@@ -185,7 +195,7 @@ export default {
       ],
     },
 
-    // ===== EQUATION BLOCK =====
+    // ----- EQUATION BLOCK -----
     {
       type: 'object',
       name: 'equation',
@@ -201,6 +211,45 @@ export default {
         },
         { name: 'caption', type: 'string', title: 'Caption' },
       ],
+    },
+
+    // ==========================================
+    // 🔗 PHASE 5 — PROFESSIONAL ESSENTIALS
+    // ==========================================
+
+    // ----- CODE BLOCK -----
+    {
+      type: 'object',
+      name: 'codeBlock',
+      title: 'Code Block',
+      icon: BsCode,
+      fields: [
+        { name: 'code', type: 'text', title: 'Code' },
+        {
+          name: 'language',
+          type: 'string',
+          title: 'Language',
+          options: {
+            list: ['JavaScript', 'TypeScript', 'Python', 'HTML', 'CSS', 'Bash', 'JSON', 'SQL'],
+          },
+        },
+      ],
+    },
+
+    // ----- HORIZONTAL LINE -----
+    {
+      type: 'object',
+      name: 'horizontalLine',
+      title: 'Horizontal Line',
+      icon: MdHorizontalRule,
+    },
+
+    // ----- PAGE BREAK -----
+    {
+      type: 'object',
+      name: 'pageBreak',
+      title: 'Page Break',
+      icon: MdPageview,
     },
   ],
 }
