@@ -1,4 +1,3 @@
-// 🔥 Trigger deploy — GitHub Actions workflow
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
@@ -8,8 +7,9 @@ export default defineConfig({
   name: 'default',
   title: 'ChemLab Academy CMS',
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'yfx6cpv1',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  studioHost: 'chemlab-academy',
 
   plugins: [deskTool(), visionTool()],
 
