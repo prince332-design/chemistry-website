@@ -2,7 +2,8 @@ import { defineCliConfig } from 'sanity/cli'
 
 export default defineCliConfig({
   api: {
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+    projectId: 'yfx6cpv1',
+    dataset: 'production'
   },
+  studioHost: 'chemlab-academy' // Ye line add kar dein
 })
