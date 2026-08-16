@@ -7,6 +7,7 @@ on:
       - 'sanity/**'
       - 'sanity.config.ts'
       - 'sanity.cli.ts'
+      - 'package.json'
 
 jobs:
   deploy:
