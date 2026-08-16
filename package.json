@@ -6,11 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sanity:dev": "sanity dev",
+    "sanity:deploy": "sanity deploy"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.7.1",
     "@sanity/client": "^6.0.0",
+    "@sanity/vision": "^3.0.0",
     "@next/third-parties": "latest",
     "@radix-ui/react-avatar": "^1.2.6",
     "@radix-ui/react-dialog": "^1.1.23",
@@ -36,6 +39,7 @@
     "react-hook-form": "^7.85.0",
     "react-icons": "latest",
     "react-parallax-tilt": "^1.7.337",
+    "sanity": "^3.0.0",
     "shadcn": "^4.16.2",
     "sonner": "^2.0.8",
     "tailwind-merge": "^3.6.0",
