@@ -5,5 +5,5 @@ export default defineCliConfig({
     projectId: 'yfx6cpv1',
     dataset: 'production'
   },
-  studioHost: 'chemlab-academy' // Ye line add kar dein
+  studioHost: 'chemlab-academy'
 })
