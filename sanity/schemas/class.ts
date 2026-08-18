@@ -1,94 +1,129 @@
 export default {
   name: 'class',
-  title: 'Class / Level',
+  title: 'Class / Grade',
   type: 'document',
+
   fields: [
     {
       name: 'title',
-      title: 'Class Title',
+      title: 'Class / Grade',
       type: 'string',
+      validation: (Rule: any) => Rule.required(),
       options: {
         list: [
-          // 🏫 School Level (Matric)
           { title: 'Class 6', value: '6' },
           { title: 'Class 7', value: '7' },
           { title: 'Class 8', value: '8' },
           { title: 'Class 9 (Matric Part 1)', value: '9' },
           { title: 'Class 10 (Matric Part 2)', value: '10' },
-          // 🎓 College Level (FSc / Intermediate)
-          { title: 'Class 11 (FSc Part 1)', value: '11' },
-          { title: 'Class 12 (FSc Part 2)', value: '12' },
-          // 🏛️ University Level
-          { title: 'BS 1st Year', value: 'bs1' },
-          { title: 'BS 2nd Year', value: 'bs2' },
-          { title: 'BS 3rd Year', value: 'bs3' },
-          { title: 'BS (Hons) 4th Year', value: 'bs4' },
-          { title: 'M.Phil', value: 'mphil' },
-          { title: 'PhD', value: 'phd' }
+          { title: 'Class 11 (Intermediate / HSSC Part 1)', value: '11' },
+          { title: 'Class 12 (Intermediate / HSSC Part 2)', value: '12' }
         ]
       }
     },
+
     {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: { source: 'title' }
+      options: {
+        source: 'title',
+        maxLength: 96
+      },
+      validation: (Rule: any) => Rule.required()
     },
+
     {
-      name: 'level',
+      name: 'educationLevel',
       title: 'Education Level',
       type: 'string',
       options: {
         list: [
-          { title: '🎒 Middle (Grade 6-8)', value: 'middle' },
-          { title: '📚 Secondary (Grade 9-10 / Matric / SSC)', value: 'secondary' },
-          { title: '📖 Higher Secondary (Grade 11-12 / Intermediate / HSSC / FSc)', value: 'higher-secondary' },
-          { title: '🎓 Undergraduate (BS / BA / BSc)', value: 'undergraduate' },
-          { title: '🔬 Postgraduate (M.Sc / MS / M.Phil / PhD)', value: 'postgraduate' },
+          { title: 'Middle (Grades 6â€“8)', value: 'middle' },
+          { title: 'Secondary / Matric (Grades 9â€“10)', value: 'secondary' },
+          { title: 'Higher Secondary / Intermediate (Grades 11â€“12)', value: 'higher-secondary' }
         ]
-      }
+      },
+      validation: (Rule: any) => Rule.required()
     },
+
     {
-      name: 'board',
-      title: 'Board (Pakistan)',
+      name: 'institutionType',
+      title: 'Institution Type',
       type: 'string',
       options: {
         list: [
-          { title: '🏛️ Punjab Board (BISE Lahore)', value: 'punjab' },
-          { title: '🏛️ FBISE (Islamabad)', value: 'fbise' },
-          { title: '🏛️ Sindh Board (BISE Karachi)', value: 'sindh' },
-          { title: '🏛️ KPK Board (BISE Peshawar)', value: 'kpk' },
-          { title: '🏛️ Balochistan Board (BISE Quetta)', value: 'balochistan' },
-          { title: '🏛️ Aga Khan University Board', value: 'aku' },
-          { title: '🏛️ University (No Board)', value: 'university' }
+          { title: 'School', value: 'school' },
+          { title: 'College', value: 'college' }
         ]
       },
-      description: 'Select board for school/college level, or select University for BS and above'
+      validation: (Rule: any) => Rule.required()
     },
+
+    {
+      name: 'board',
+      title: 'Board',
+      type: 'reference',
+      to: [{ type: 'board' }],
+      description:
+        'Select the Pakistani examination board applicable to this class.'
+    },
+
     {
       name: 'group',
       title: 'Group / Stream',
       type: 'string',
       options: {
         list: [
-          { title: '🔬 Science (Pre-Medical)', value: 'premedical' },
-          { title: '🔭 Science (Pre-Engineering)', value: 'preengineering' },
-          { title: '📊 Commerce', value: 'commerce' },
-          { title: '💻 Computer Science (ICS)', value: 'ics' },
-          { title: '🧮 General Science', value: 'generalscience' },
-          { title: '📚 Humanities / Arts', value: 'humanities' },
-          { title: '🎨 Fine Arts', value: 'finearts' },
-          { title: '⚖️ Law', value: 'law' },
-          { title: '🔧 Technical (DAE)', value: 'technical' }
+          { title: 'Science â€“ Pre-Medical', value: 'premedical' },
+          { title: 'Science â€“ Pre-Engineering', value: 'preengineering' },
+          { title: 'Computer Science / ICS', value: 'ics' },
+          { title: 'Commerce', value: 'commerce' },
+          { title: 'General Science', value: 'generalscience' },
+          { title: 'Humanities / Arts', value: 'humanities' },
+          { title: 'Technical / DAE', value: 'technical' },
+          { title: 'Other', value: 'other' }
         ]
       },
-      description: 'Select group/stream for college level (11-12), or leave blank for BS and above'
+      description:
+        'Mainly applicable to Intermediate and other stream-based programs.'
     },
+
     {
       name: 'description',
-      title: 'Description',
+      title: 'Class Description',
       type: 'text',
-      description: 'Brief description about this class level'
+      rows: 4
+    },
+
+    {
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      description: 'Controls the order in which classes appear.'
+    },
+
+    {
+      name: 'active',
+      title: 'Active',
+      type: 'boolean',
+      initialValue: true,
+      description:
+        'Disable this class if it should temporarily not appear on the platform.'
     }
-  ]
+  ],
+
+  preview: {
+    select: {
+      title: 'title',
+      level: 'educationLevel',
+      institution: 'institutionType'
+    },
+    prepare({ title, level, institution }: any) {
+      return {
+        title,
+        subtitle: `${institution || 'Education'} â€¢ ${level || 'Level'}`
+      }
+    }
+  }
 }

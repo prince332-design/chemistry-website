@@ -5,3 +5,8 @@ node_modules/
 out/ 
 dist/ 
 build/ 
+.sanity/
+
+# Local temporary files
+LOCAL-CODE-DUMP.txt
+*-search.txt

@@ -2,76 +2,259 @@ export default {
   name: 'subject',
   title: 'Subject / Course',
   type: 'document',
+
   fields: [
+    // =========================================================
+    // BASIC INFORMATION
+    // =========================================================
     {
       name: 'title',
-      title: 'Subject / Course Title',
+      title: 'Subject / Course Name',
       type: 'string',
-      description: 'e.g., Chemistry, Physics, General Science, Organic Chemistry, M.Phil Organic Chemistry'
+      validation: (Rule: any) => Rule.required(),
     },
+
     {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: { source: 'title' }
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (Rule: any) => Rule.required(),
     },
+
     {
-      name: 'description',
-      title: 'Description',
-      type: 'text'
+      name: 'code',
+      title: 'Course / Subject Code',
+      type: 'string',
+      description:
+        'Optional. Examples: CHEM-101, CHEM-301, CHEM-401.',
     },
+
+    // =========================================================
+    // EDUCATION CONTEXT
+    // =========================================================
     {
-      name: 'isCourse',
-      title: 'Is this a Course? (Specialization)',
-      type: 'boolean',
-      description: '✅ Check this if it is a specialized course (e.g., Organic Chemistry under Chemistry). Leave unchecked for main subjects (e.g., Chemistry, Physics).',
-      initialValue: false
-    },
-    {
-      name: 'parentSubject',
-      title: 'Parent Subject (Main Subject)',
-      type: 'reference',
-      to: [{ type: 'subject' }],
-      description: 'If this is a specialized course (e.g., Organic Chemistry), select its main subject (e.g., Chemistry).'
-    },
-    {
-      name: 'subjects',
-      title: 'Sub-Subjects / Specialized Courses',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'subject' }] }],
-      description: 'If this is a main subject (e.g., Chemistry), add its specialized courses here (e.g., Organic Chemistry, Inorganic Chemistry).'
-    },
-    {
-      name: 'classes',
-      title: 'Classes (Where is this taught?)',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'class' }] }],
-      description: 'Select which classes this subject belongs to (e.g., Class 11, BS 1st Year).'
-    },
-    {
-      name: 'fieldOfStudy',
-      title: 'Field / Group',
+      name: 'educationLevel',
+      title: 'Education Level',
       type: 'string',
       options: {
         list: [
-          { title: '🔬 Pre-Medical (Science)', value: 'premedical' },
-          { title: '🔭 Pre-Engineering (Science)', value: 'preengineering' },
-          { title: '💻 Computer Science (ICS)', value: 'ics' },
-          { title: '📊 Commerce', value: 'commerce' },
-          { title: '📚 Humanities / Arts', value: 'humanities' },
-          { title: '🧮 General Science', value: 'generalscience' },
-          { title: '🎨 Fine Arts', value: 'finearts' },
-          { title: '⚖️ Law', value: 'law' },
-          { title: '🔧 Technical (DAE)', value: 'technical' }
-        ]
+          {
+            title: 'Middle â€” Grades 6â€“8',
+            value: 'middle',
+          },
+          {
+            title: 'Secondary / Matric â€” Grades 9â€“10',
+            value: 'secondary',
+          },
+          {
+            title: 'Higher Secondary / Intermediate â€” Grades 11â€“12',
+            value: 'higher-secondary',
+          },
+          {
+            title: 'Undergraduate / BS',
+            value: 'undergraduate',
+          },
+          {
+            title: 'M.Phil / MS',
+            value: 'mphil-ms',
+          },
+          {
+            title: 'PhD',
+            value: 'phd',
+          },
+        ],
       },
-      description: 'Select the group for school/college level. Leave blank for university level (BS/M.Phil/PhD) if not applicable.'
+      validation: (Rule: any) => Rule.required(),
     },
+
+    // =========================================================
+    // SCHOOL / COLLEGE
+    // =========================================================
     {
-      name: 'icon',
-      title: 'Icon Name (Lucide)',
+      name: 'institutionType',
+      title: 'Institution Type',
       type: 'string',
-      description: 'e.g., FlaskConical, Atom, Beaker'
-    }
-  ]
+      options: {
+        list: [
+          {
+            title: 'School',
+            value: 'school',
+          },
+          {
+            title: 'College',
+            value: 'college',
+          },
+          {
+            title: 'University',
+            value: 'university',
+          },
+        ],
+      },
+      validation: (Rule: any) => Rule.required(),
+    },
+
+    {
+      name: 'board',
+      title: 'Board / Examination Authority',
+      type: 'reference',
+      to: [{ type: 'board' }],
+      description:
+        'For Pakistani school and college subjects. Leave empty for university courses.',
+    },
+
+    {
+      name: 'class',
+      title: 'Class / Grade',
+      type: 'reference',
+      to: [{ type: 'class' }],
+      description:
+        'For school and college subjects. Examples: Class 9, Class 10, Class 11, Class 12.',
+    },
+
+    // =========================================================
+    // UNIVERSITY PROGRAM
+    // =========================================================
+    {
+      name: 'program',
+      title: 'Degree / Program',
+      type: 'string',
+      options: {
+        list: [
+          {
+            title: 'BS Chemistry',
+            value: 'bs-chemistry',
+          },
+          {
+            title: 'BS Applied Chemistry',
+            value: 'bs-applied-chemistry',
+          },
+          {
+            title: 'M.Phil Chemistry',
+            value: 'mphil-chemistry',
+          },
+          {
+            title: 'M.Phil Applied Chemistry',
+            value: 'mphil-applied-chemistry',
+          },
+          {
+            title: 'Other',
+            value: 'other',
+          },
+        ],
+      },
+      description:
+        'Primarily used for university-level courses.',
+    },
+
+    {
+      name: 'semester',
+      title: 'Semester',
+      type: 'number',
+      validation: (Rule: any) =>
+        Rule.min(1).max(8),
+      description:
+        'For BS programs: Semester 1â€“8. Leave empty where not applicable.',
+    },
+
+    // =========================================================
+    // UNIVERSITY ACADEMIC DETAILS
+    // =========================================================
+    {
+      name: 'credits',
+      title: 'Credit Hours',
+      type: 'number',
+      validation: (Rule: any) =>
+        Rule.min(0),
+      description:
+        'University course credit hours, if applicable.',
+    },
+
+    // =========================================================
+    // CONTENT
+    // =========================================================
+    {
+      name: 'description',
+      title: 'Subject / Course Description',
+      type: 'text',
+      rows: 4,
+    },
+
+    {
+      name: 'image',
+      title: 'Subject / Course Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative Text',
+          type: 'string',
+        },
+      ],
+    },
+
+    // =========================================================
+    // MANAGEMENT
+    // =========================================================
+    {
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      description:
+        'Controls the order in which subjects/courses appear.',
+    },
+
+    {
+      name: 'active',
+      title: 'Active',
+      type: 'boolean',
+      initialValue: true,
+      description:
+        'Disable this subject/course if it should temporarily be hidden from the website.',
+    },
+  ],
+
+  // =========================================================
+  // STUDIO PREVIEW
+  // =========================================================
+  preview: {
+    select: {
+      title: 'title',
+      code: 'code',
+      level: 'educationLevel',
+      program: 'program',
+      semester: 'semester',
+      classTitle: 'class.title',
+    },
+
+    prepare({
+      title,
+      code,
+      level,
+      program,
+      semester,
+      classTitle,
+    }: any) {
+      const details = [
+        code,
+        classTitle,
+        program,
+        semester ? `Semester ${semester}` : null,
+        level,
+      ]
+        .filter(Boolean)
+        .join(' â€¢ ')
+
+      return {
+        title,
+        subtitle: details || 'Subject / Course',
+      }
+    },
+  },
 }
